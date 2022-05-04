@@ -11,8 +11,8 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repovcontie
 ## 1. Premiers pas avec Traefik
 * [Premiers pas avec Traefik](./01-Traefik-Apreçu/traefik_overview.md)
 
-## 2. Configure Traefik 
-* [Traefik Conf Statique & Dynamique](./02-Traefik-Configuration/traefik-configuration.md)
+## 2. Configuration Traefik 
+* [Traefik Configuration Statique & Dynamique](./02-Traefik-Configuration/traefik-configuration.md)
 
 ## 3. Traefik Routeurs & Services
 * [Traefik Routeurs & Services](./03-Traefik-Routeurs-&-Services/traefik-routers-and-services.md)
