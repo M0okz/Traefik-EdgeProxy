@@ -1,6 +1,6 @@
-# Cloud Traefik Ressources
+# Traefik Cloud Ressources
 
-<img src="./img/traefik_logo.png" alt="Traefik Logo" height="350"> 
+<img src="./img/traefik_logo.png" alt="Traefik Logo" height="350" width="100" > 
 
 Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repovcontient tout les ressources [Traefik](https://containo.us/traefik/) de notre cours sur la formation avec Traefik
 ## Traefik Training Course
