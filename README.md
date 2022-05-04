@@ -9,7 +9,7 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repovcontie
 * [Setup Lab Enviornment](./00-Traefik-Setup-Labo/setup.md)
 
 ## 1. Premiers pas avec Traefik
-* [Premiers pas avec Traefik](./01-Traefik-Apreçu/traefik_overview.md)
+* [Premiers pas avec Traefik](./01-Traefik-Aperçu/traefik_overview.md)
 
 ## 2. Configuration Traefik 
 * [Traefik Configuration Statique & Dynamique](./02-Traefik-Configuration/traefik-configuration.md)
