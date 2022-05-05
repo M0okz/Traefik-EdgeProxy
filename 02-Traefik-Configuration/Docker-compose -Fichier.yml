@@ -19,7 +19,7 @@ services:
 #      - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.yml:/etc/traefik/traefik.yml
+#      - ./traefik.yml:/etc/traefik/traefik.yml
 #########################################################
 ## WEBSERVERS
 #########################################################

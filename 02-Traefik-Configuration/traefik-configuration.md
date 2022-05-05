@@ -26,6 +26,9 @@ services:
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
       - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+#      - ./traefik.yml:/etc/traefik/traefik.yml
 ```
 ### 2. Fichier de configuration statique
 
@@ -53,11 +56,9 @@ providers:
 log:
   level: INFO
 ```
-2. Commenter la configration statique CLI comme ceci, dans le fichier `docker-compose.yml`
+2. Decommenter la configration statique CLI comme ceci, dans le fichier `docker-compose.yml`
 
 ```yaml
----
-version: '3'
 services:
 #########################################################
 ## TRAEFIK
@@ -68,22 +69,16 @@ services:
     ports:
       - 80:80
       - 8080:8080 #Management UI
-#    command:
-#     - --api.dashboard=true
-#     - --providers.docker=true
-#     - --log.level=INFO
+    command: # CLI arguments
+#      - --entrypoints.web.address=:80      
+#      - --entrypoints.websecure.address=:443
+#      - --api.dashboard=true
+#      - --providers.docker=true
+#      - --providers.docker.exposedByDefault=false
+#      - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yml:/etc/traefik/traefik.yml
-      
-#########################################################
-## WEBSERVERS
-#########################################################
-#  whoami:
-#    image: traefik/whoami
-#    labels: 
-#      - "traefik.enable=true"
-#      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
 ```
 ## 4. Static Configuration Entrypoint Lab
 In this section, we will start using Docker Swarm. Ensure you have followed the Prerequisites from the Lab Setup. This can be found in the Getting Started Section of the course if you need to revisit. If you have any issues please add a comment in the course.
