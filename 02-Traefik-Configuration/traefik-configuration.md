@@ -53,7 +53,7 @@ providers:
 log:
   level: INFO
 ```
-2. Commenter la configration statique CLI comme ceci.
+2. Commenter la configration statique CLI comme ceci, dans le fichier `docker-compose.yml`
 
 ```yaml
 ---
