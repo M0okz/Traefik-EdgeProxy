@@ -46,16 +46,14 @@ Pensez à switch sur les container Linux : https://docs.docker.com/docker-for-wi
 
 3. Si cette commande retourne un message Hello de Docker tout est bon pour cette partie. Sinon reporter au meesage d'erreur recontrer et refaite les étape plus haut.
 
-4. Install Git, so we can check out the Labs - https://git-scm.com/downloads or GitHub Desktop https://desktop.github.com/
+4. Installer les outils supplémentaire tel que GIt et Vscode, il existe des version pour Windows, Mac et Linux.
 
-Check out the Labs
-Now, let's check out the Labs which contain all the resources for each lab. From your terminal window, Git client, GitHub Desktop, or Visual Studio code clone the Traefik Training Repo.
-
+Maintnenant récuperer tout le contenu de la formation avec votre client Git.
 ```bash 
-git clone https://github.com/56kcloud/traefik-training.git
+git clone https://github.com/M0okz/Traefik-Udemy.git
 ```
 
-You can find the Traefik Training GitHub Repo here - https://github.com/56kcloud/traefik-training
+Retrouver le Repo GitHub de la formation - https://github.com/M0okz/Traefik-Udemy
 
 ## Questions
 Si vous avez des questions ou des problématique sur cette étape, venez rejooindre le Discord prévu. https://discord.gg/sswhANDbKa .
