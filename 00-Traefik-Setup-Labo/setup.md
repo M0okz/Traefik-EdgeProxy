@@ -34,6 +34,7 @@
 
 **Windows** - Pour ceux qui souhaite il est possible d'executer docker sous windows :https://docs.docker.com/docker-for-windows/install/
 Pensez à switch sur les container Linux : https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
+
 **Mac** - https://docs.docker.com/docker-for-mac/install/
 
 2. Once Docker is installed, let's verify the docker installation. Open a terminal window (Windows users open Powershell with Admin rights). Next, run the following command
