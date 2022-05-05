@@ -7,7 +7,7 @@
 4. Surveillez vos logs avec docker `docker-compose logs`(Cette commande log print toute la stack)
 
 ##  2. Ajouter une service à Traefik
-1. Decommnenter la section`WEBSERVERS` dans le fichier `docker-compose.yml`. Pour obtenir ceci.
+1. Decommnenter la section `WEBSERVERS` dans le fichier `docker-compose.yml`. Pour obtenir ceci.
 
 ```yaml
 #########################################################
@@ -20,8 +20,8 @@
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
 ```
 
-2. Run `docker-compose up -d whoami`
-3. Open a browser tab and paste `whoami.docker.localhost`  or from a terminal window `curl -H Host:whoami.docker.localhost http://127.0.0.1` and you should see the below results but with your IP addresses.
+2. Enfin `docker-compose up -d`
+3. Ouvre une page de votre navigateur avec l'adresse : `whoami.docker.localhost`  ou depuis un terminal `curl -H Host:whoami.docker.localhost http://127.0.0.1` ensuite vous obtiendre ceci mais avec vos adresses.
 
 ```yml
 Hostname: 931789a57923
