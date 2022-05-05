@@ -16,8 +16,8 @@ services:
 #########################################################
 ## WEBSERVERS
 #########################################################
-  whoami:
-    image: traefik/whoami
-    labels: 
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+#  whoami:
+#    image: traefik/whoami
+#    labels: 
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"

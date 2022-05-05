@@ -6,16 +6,18 @@
 3. Dans notre dossier `01-Traefik-Overview` executer cette commande -> `docker-compose up -d`
 4. Surveillez vos logs avec docker `docker-compose logs`(Cette commande log print toute la stack)
 
-##  2. Connect a new service to Traefik
-1. Uncomment the below whoami section inside the `docker-compose.yml`. Review the `whoami.yml` file for the complete solution.
+##  2. Ajouter une service à Traefik
+1. Decommnenter la section``WEBSERVERS` dans le fichier `docker-compose.yml`. Pour obtenir ceci.
 
 ```yaml
-whoami:
-     # A container that exposes an API to show its IP address
-     image: containous/whoami
-     # We set a label to tell Traefik to assign a hostname to the new service
-     labels:
-       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+#########################################################
+## WEBSERVERS
+#########################################################
+  whoami:
+    image: traefik/whoami
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
 ```
 
 2. Run `docker-compose up -d whoami`
