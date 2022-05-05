@@ -7,7 +7,7 @@
 4. Surveillez vos logs avec docker `docker-compose logs`(Cette commande log print toute la stack)
 
 ##  2. Ajouter une service à Traefik
-1. Decommnenter la section``WEBSERVERS` dans le fichier `docker-compose.yml`. Pour obtenir ceci.
+1. Decommnenter la section`WEBSERVERS` dans le fichier `docker-compose.yml`. Pour obtenir ceci.
 
 ```yaml
 #########################################################
