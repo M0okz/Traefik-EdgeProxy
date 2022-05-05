@@ -1,7 +1,5 @@
 # Configuration de notre LABO
 
-<img src="../img/Traefik_training.png" alt="Traefik Logo" height="350"> 
-
 ## LAB Prerequisites
 
 1. Installation docker pour Linux, Mac ou Windows.
