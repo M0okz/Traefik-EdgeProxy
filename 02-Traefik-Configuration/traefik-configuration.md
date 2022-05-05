@@ -80,24 +80,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yml:/etc/traefik/traefik.yml
 ```
-## 4. Static Configuration Entrypoint Lab
-In this section, we will start using Docker Swarm. Ensure you have followed the Prerequisites from the Lab Setup. This can be found in the Getting Started Section of the course if you need to revisit. If you have any issues please add a comment in the course.
+# Continuer vers la Gestion des Routers & Services
 
-## NOTE about Docker ##
-We use the `docker stack deploy -c <compose file name> <user provided stack name>` command to deploy Swarm services. `docker stack ps <stack name>` is used to check if all services are running in the stack. Finally, `docker stack rm <stack name>` removes the entire stack. 
-
-To check logs on a running service, `docker service ls` to retrieve the name of the service and `docker service logs <service name>` to vier it's logs. 
-
-Further Docker information can be found here for [Docker Stack](https://docs.docker.com/engine/reference/commandline/stack/) or [Docker services](https://docs.docker.com/engine/reference/commandline/service/)
-
-1. Open the `traefik-entrypoints.yml` and `docker-compose.configuration.yml` files in your favorite editor and review how Entrypoints are created and how we are using the YML file in this Lab.
-2. From the `02-Configure-Traefik` directory execute this command -> `docker stack deploy -c docker-compose.configuration.yml catapp`
-3. Open the Traefik Dashboard [http://0.0.0.0:8080](http://0.0.0.0:8080) and review how the test service `catapp` is configured with **Entrypoints**.
-4. Review the `catapp@docker` router and `catapp@docker` service in the Traefik Dashboard
-5. Test the newly deployed `catapp` service [http://catapp.localhost/](http://catapp.localhost/)
-6. Stop and clean-up `docker stack rm catapp`
-
-
-# Continue to the Next Lab Routers & Services
-
-### Click here to continue -> [Routers & Services Lab](https://github.com/56kcloud/traefik-training/blob/master/03-Routers-and-Services/traefik-routers-and-services.md)
+### Clique ici -> [03-Traefik-Routeurs-&-Services](https://github.com/M0okz/Traefik-Udemy/blob/main/03-Traefik-Routeurs-%26-Services/traefik-routers-and-services.md)
