@@ -1,6 +1,6 @@
 # Configure Traefik
 
-## 1. Configuration statique
+## 1. Configuration statique CLI
 1. Assurez vous que tout les conteneur précédent soit eteints avec ``docker ps``. Si ce n'est pas le cas dans le précédent dossier faite un `docker-compose stop`
 2. Dans le dossier `02-Traefik-Configuration`
 3. Ouvez le fichier `docker-compose.file.yml` dans votre editeur de texte
@@ -8,24 +8,24 @@
 5. Verifier vos logs `docker-compose logs`
 6. Arreter et effacer tout les conteneurs `docker-compose  stop`
 
-## 1. Configuration statique CLI
-1. Open the `docker-compose.cli.yml` file in your favorite editor and review how Docker starts Traefik using the CLI configuration
-2. From the `02-Configure-Traefik` directory execute this command -> `docker-compose -f docker-compose.cli.yml up -d`
-3. Review the logs output `docker-compose -f docker-compose.cli.yml logs`
-4. Stop and clean-up `docker-compose -f docker-compose.cli.yml stop`
-
 ```yml
 services:
-  traefik:
-    # The latest official supported Traefik docker image
-    image: traefik:v2.3
-    # Enables the Traefik Dashboard and tells Traefik to listen to docker
-    # --providers tell Traefik to connect to the Docker provider
-    # enable --log.level=INFO so we can see what Traefik is doing in the log files
-    command: 
-      - "--api.insecure=true"
-      - "--providers.docker" 
-      - "--log.level=INFO"
+#########################################################
+## TRAEFIK
+#########################################################
+  reverse-proxy: 
+    container_name: traefik
+    image: traefik:v2.6.3
+    ports:
+      - 80:80
+      - 8080:8080 #Management UI
+    command: # CLI arguments
+      - --entrypoints.web.address=:80      
+      - --entrypoints.websecure.address=:443
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedByDefault=false
+      - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 ```
 ### 2. Fichier de configuration statique
 
