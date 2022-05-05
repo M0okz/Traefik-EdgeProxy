@@ -21,7 +21,7 @@
 ```
 
 2. Enfin `docker-compose up -d`
-3. Ouvre une page de votre navigateur avec l'adresse : `whoami.docker.localhost`  ou depuis un terminal `curl -H Host:whoami.docker.localhost http://127.0.0.1` ensuite vous obtiendre ceci mais avec vos adresses.
+3. Ouvrez une page de votre navigateur avec l'adresse : `whoami.docker.localhost`  ou depuis un terminal `curl -H Host:whoami.docker.localhost http://127.0.0.1` ensuite vous obtiendre ceci mais avec vos adresses.
 
 ```yml
 Hostname: 931789a57923
@@ -49,15 +49,15 @@ X-Real-Ip: 172.20.0.1
 
 ```
 
-##  3. Scale the Whoami service to 3x
-1. Open you Terminal window and change to the `01-Traefik-Overview` folder
-2. Let's scale the `whoami` service to 3x instances by typing `docker-compose scale whoami=3`
-3. Open a browser tab and paste `whoami.docker.localhost`  or from a terminal window `curl -H Host:whoami.docker.localhost http://127.0.0.1` and you should see the 3rd IP address update based on which service is responding.
+##  3. Scale le service Whoami
+1. Par votre terminal deplacer vous dans le dossier `01-Traefik-Aperçu`
+2. Nous allons scale le service `whoami` afin d'en obtenir 3 instances en tapant `docker-compose scale whoami=3`
+3. Ouvrez une page de votre navigateur avec l'adresse : `whoami.docker.localhost`  ou depuis votre terminal : `curl -H Host:whoami.docker.localhost http://127.0.0.1` avec un refresh l'adresse devrait changer entant donnée que l'on à 3 instances pour le même service.
 
-##  4. Get to know the Traefik Dashboard
-1. Open a browser tab and type or click: http://0.0.0.0:8080 to open the Traefik Dashboard
+##  4. Rencontre avec le Dashboard
+1. Ouvrez une fenetre : http://0.0.0.0:8080 pour acceder au panel Traefik
 
 
-# Continue to the Configure Traefik Lab
+# Continuer pour la Configration de Traefik
 
-### Click here to continue -> [Configure Traefik](https://github.com/56kcloud/traefik-training/blob/master/02-Configure-Traefik/traefik-configuration.md)
+### Clique ici -> [02-Traefik-Configuration](https://github.com/M0okz/Traefik-Udemy/tree/main/02-Traefik-Configuration/traefik-configuration.md)
