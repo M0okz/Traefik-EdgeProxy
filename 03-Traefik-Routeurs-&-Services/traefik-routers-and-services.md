@@ -1,8 +1,5 @@
 # Traefik Routers & Services Lab
 
-<img src="../img/Traefik_training.png" alt="Traefik Logo" height="350"> 
-
-
 ## 1. Deploying a Traefik Router, Service, and Load balancer step-by-step
 1. Before we begin, lets cleanup any running Docker stack `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
 2. Change to the `03-Routers-and-Services` folder

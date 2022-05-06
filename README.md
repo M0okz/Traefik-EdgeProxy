@@ -3,11 +3,11 @@
 <img src="./img/traefik_logo.png" alt="Traefik Logo" >
 </p>
 
-Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repovcontient tout les ressources [Traefik](https://containo.us/traefik/) de notre cours sur la formation avec Traefik
-## Traefik Training Course
+Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repo contient tout les ressources [Traefik](https://containo.us/traefik/) de notre cours sur la formation avec Traefik
+## Formation Traefik Reverse Proxy
 
 ## 0. Configuration de note Labo
-* [Setup Lab Enviornment](./00-Traefik-Setup-Labo/setup.md)
+* [Mise en place du LAB](./00-Traefik-Setup-Labo/setup.md)
 
 ## 1. Premiers pas avec Traefik
 * [Premiers pas avec Traefik](./01-Traefik-Aperçu/traefik_overview.md)
@@ -22,7 +22,7 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repovcontie
 * [Traefik HTTPS & TLS](./04-Traefik-HTTPS-&-TLS/traefik-https-tls.md)
 
  ## 5. Traefik Middlewares
-* [Traefik Middlewares](./05-Traefik-Modules/traefik-middlewares.md)
+* [Traefik Modules (Middleware)](./05-Traefik-Modules/traefik-middlewares.md)
 
 ## 6. Traefik Monitoring & Logs
 * [Traefik Monitoring](./06-Traefik-Monitoring-&-Logs/traefik-monitoring.md)
