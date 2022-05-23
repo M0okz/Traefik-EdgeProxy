@@ -1,0 +1,33 @@
+---
+version: '3'
+services:
+#########################################################
+## TRAEFIK
+#########################################################
+  reverse-proxy: 
+    container_name: traefik
+    image: traefik:v2.6.3
+    ports:
+      - 80:80
+      - 8080:8080 #Management UI
+    command: # CLI arguments
+      - --entrypoints.web.address=:80      
+      - --entrypoints.websecure.address=:443
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedByDefault=false
+      - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+#      - ./traefik.yml:/etc/traefik/traefik.yml
+#########################################################
+## WEBSERVERS
+#########################################################
+  whoami:
+    image: traefik/whoami
+#    labels:
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+#       - "traefik.http.routers.whoami.entrypoints=web"
+#       - "traefik.http.routers.whoami.service=whoami"
+#       - "traefik.http.services.whoami.loadbalancer.server.port=5000"
