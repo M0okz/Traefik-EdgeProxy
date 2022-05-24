@@ -16,11 +16,9 @@
 ```
 
 7. Dans le dossier  `03-Routers-and-Services` decommenter la section label comme ci-dessus
-8. Open the Traefik Dashboard [http://0.0.0.0:8080](http://0.0.0.0:8080) and review the `catapp` Router & Service. **What do you see?**
-   
-`catapp`is now running but with default configurations provided from Traefik. Now, we will set additional Labels to define the Router Rule, Entrypoint, and service.
+8. Accerder au dashboard Traefik  [http://0.0.0.0:8080](http://0.0.0.0:8080) et observer le routeur nouvellement créer `whoami`.
 
-1. From the `03-Routers-and-Services` directory edit the `docker-compose.yml` file and add the Labels to the `catapp` for a Router rule, define the Entrypoint, and service as seen below. Uncomment the `- "traefik.http.routers.catapp.rule=Host(`catapp.localhost`)"` to define the hostname of our `catapp` as `catapp.localhost`. Next, we define which Entrypoint to use with the **Label** uncomment `- "traefik.http.routers.catapp.entrypoints=web"` to define HTTP/web Entrypoint. Finally, we uncommet the next label `- "traefik.http.routers.catapp.service=catapp"` to tell the Router which Service to use. This is for Demo purposes only as normally Traefik pulls this configuration automatically. The new `catapp` section the `docker-compose.yml` file should look like this:
+1. Toujours dans le dossier `03-Routers-and-Services`editer notre fichier compose `docker-compose.yml`et decommenter le reste des lignes afin de definir un routeur, un service et un point d'entrée. La nouvelle section de l'appli  `whoami` dans notre fichier doit resemble à cela :
 
 ```yaml
   whoami:
@@ -32,7 +30,7 @@
        - "traefik.http.routers.whoami.service=whoami"
 ```
 
-10. From the `03-Routers-and-Services` directory execute this command -> `docker stack deploy -c docker-compose.yml traefik` **this will update our Docker Swarm Stack with the new Label changes. Changes take about 10-15 seconds to apply**
+10. Demarrer à nouveau la pile, avec la commande -> `docker-compose up -d`, les changement nécéssaires seront apporté.
 
 ## 3. Make everything Dynamic
 In this Lab we will comment out the **Service** and **Load Balancer** Labels to see how Traefik will *Dynamically* create the service and **Load Balancer**.
