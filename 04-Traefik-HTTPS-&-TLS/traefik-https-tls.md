@@ -103,4 +103,4 @@ openssl x509 -days 825 -req -in server.csr -CA root.cer -CAkey root.key -set_ser
 
 # # Poursuivre vers la gestion des modules (Middleware)
 
-### Clique ici ->  [05-Traefik-BONUS](https://github.com/M0okz/Traefik-Udemy/blob/main/05-Traefik-Modules/traefik-middlewares.md)
+### Clique ici ->  [05-Traefik-Modules](https://github.com/M0okz/Traefik-Udemy/blob/main/05-Traefik-Modules/traefik-middlewares.md)
