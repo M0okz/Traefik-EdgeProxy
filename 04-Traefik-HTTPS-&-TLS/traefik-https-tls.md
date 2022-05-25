@@ -1,7 +1,5 @@
 # Traefik HTTPS / TLS / Let’s Encrypt Lab
 
-<img src="../img/Traefik_training.png" alt="Traefik Logo" height="350"> 
-
 # Pré-requis
 
 ** Pour réalise cet labo vous serez plus à l'aise en prenant un nom de domaine chez cloudfare pour exemple dans ce labo
@@ -9,45 +7,48 @@ Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io
 
 1. Assurez-vous d’avoir un nom de domaine
 2. Pointer  un enregistrement sur votre ip publique de votre VPS ou de votre routeur.
-
-3. Voici l'extrait de notre Lab, pour cette section:
+3. Il y aura un sous dossier pour chaque méthode dans ce labo.
+4. Voici l'extrait de notre Lab, pour cette section:
 
 
 <img src="../img/cloudfare-onglet-dns.png" alt="Traefik DNS" height="250"> 
 
 
-## 1. Deploy Traefik with Let's Encrypt HTTP Challenge
-1. Before we begin, lets cleanup any running Docker stack `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
-2. Change to the `04-HTTPS-and-TLS` folder
-3. Open the `traefik.http.yml` file in your favorite editor and review the `Challenge HTTP` section
-4. Edit the `traefik.http.yml` and edit your `email:` located in the `Challenge HTTP` section
-5. Open the `docker-compose.http.yml` file in your favorite editor and review the `catapp` section
-6. Edit the `docker-compose.http.yml` `catapp` section and add your domain here in the `- "traefik.http.routers.catapp.rule=Host(`your_domain_here`)"` label
-7. Start Traefik and the `catapp` `docker stack deploy -c docker-compose.yml traefik`
-8. Open the Traefik Dashboard [http://0.0.0.0:8080](http://0.0.0.0:8080) and verify Traefik is running and `catapp` has TLS enabled.
-9.  Open the `catapp` using the domain you filled in at step 6. Remember to use HTTPS now https://your_domain_here.com 
-10. You should now see the `catapp` served with HTTPS and a proper Let's Encrypt Certificate
+## 1. Deployer Traefik methode Let's Encrypt HTTP Challenge
+1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
+3. Ouvez le ficher `Docker-compose.yml`par votre editeur de text et par rapport à notre dernier LAB, une section à  été ajouter.
+4. Verifier que l'adresse mail que vous renseigner est  joignable pour la validation
+5. Edite le fichier `.env` et ajouter la racine de votre nom de domaine 
+6. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile.
+7. Via votre navigateur acceder au Dashboard Traefik [http://0.0.0.0:8080](http://0.0.0.0:8080)verifier ensuite que Traefik et nos services sont en HTTPS.
+8. Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
 
-## 2. Deploy Traefik with Let's Encrypt TLS Challenge
-1. Before we begin, lets cleanup the HTTP stack  `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
-2. Change to the `04-HTTPS-and-TLS` folder
-3. Open the `traefik.tls.yml` file in your favorite editor and review the `Challenge TLS` section
-4. Edit the `traefik.tls.yml` and edit your `email:` located in the `Challenge TLS` section
-5. Open the `docker-compose.http.yml` file in your favorite editor and review the `catapp` section
-6. Edit the `docker-compose.http.yml` `catapp` section and add your domain here in the `- "traefik.http.routers.catapp.rule=Host(`your_domain_here`)"` label
-7. Start Traefik and the `catapp` `docker stack deploy -c docker-compose.yml traefik`
-8. Open the Traefik Dashboard `http://your_domain_here:8080` and verify Traefik is running and `catapp` has TLS enabled.
-9.  Open the `catapp` using the domain you filled in at step 6. Remember to use HTTPS now https://your_domain_here.com 
-10. You should now see the `catapp` served with HTTPS and a proper Let's Encrypt Certificate
+## 2. Deployer Traefik methode Let's Encrypt TLS Challenge
+1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
+2. Deplacez vous dans le dossier `Methode TLS` de notre labo `04-Traefik-HTTPS-&-TLS`
+3. Ouvrez le fichier `Docker-compose.yml` a la ligne 24 le changement à été fait pour le `Challenge TLS`
+4. Edite le fichier `.env` et ajouter la racine de votre nom de domaine 
+5. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile.
+6. Open the Traefik Dashboard `http://your_domain_here:8080` and verify Traefik is running and `catapp` has TLS enabled.
+7. Via votre navigateur acceder au Dashboard Traefik [http://0.0.0.0:8080](http://0.0.0.0:8080)verifier ensuite que Traefik et nos services sont en HTTPS.
+8. Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
 
-## 3. Deploy Traefik with Let's Encrypt DNS Challenge
-1. Before we begin, lets cleanup the TLS stack `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
+## 3. Deployer Traefik methode Let's Encrypt DNS Challenge
+1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Change to the `04-HTTPS-and-TLS` folder
 3. Log in to your DNS provider and collect the Authorization Tokens for your provider. Review the [https://docs.traefik.io/v2.3/https/acme/#providers](https://docs.traefik.io/v2.3/https/acme/#providers) list to see which tokens you require for your provider. This step is unique to the DNS provider you are using. 
-4. Copy the Authorization Tokens from your provider
+4. Pour ceux qui travaillent avec cloudfare voici un exemple de notre fichier `.env`
+````dosini
+DOMAINNAME=trazcer.fr
+CLOUDFLARE_ZONEID=c65955ef4ed7de97a9c4a3efaf05886c
+CLOUDFLARE_APITOKEN=-DlCElDkZ-l_ELoIklvaCK7AiH999U2vvDPhDOZB
+CLOUDFLARE_EMAIL=gregory.narcin@icloud.com
+````
 5. Open the `docker-compose.dns.yml` file in your favorite editor and review the `traefik` section
 6. Edit the `Environment` section under the `Traefik` service.
 7. Paste the Authorization Tokens from your provider in this section. You may need different and/or additional fields here based on your provider.
+
+## Deployer Traefik avec un certificat.
 
 ```yml
     environment:
