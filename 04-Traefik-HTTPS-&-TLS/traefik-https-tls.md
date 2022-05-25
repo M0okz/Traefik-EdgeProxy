@@ -36,8 +36,8 @@ Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io
 ## 3. Deployer Traefik methode Let's Encrypt DNS Challenge
 1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Change to the `04-HTTPS-and-TLS` folder
-3. Log in to your DNS provider and collect the Authorization Tokens for your provider. Review the [https://docs.traefik.io/v2.3/https/acme/#providers](https://docs.traefik.io/v2.3/https/acme/#providers) list to see which tokens you require for your provider. This step is unique to the DNS provider you are using. 
-4. Pour ceux qui travaillent avec cloudfare voici un exemple de notre fichier `.env` avec les variables nécéssaires
+3. Rendez-vous chez votre fournissuer DNS. Retrouver la liste ici [Traefik providers](https://docs.traefik.io/v2.3/https/acme/#providers). 
+4. Pour ceux qui travaillent avec cloudfare voici un exemple de notre fichier `.env` avec les variables nécéssaires à récuperer
 ````dosini
 DOMAINNAME=trazcer.fr
 CLOUDFLARE_ZONEID=c6595ef4ed7de97a94a3efaf05886
@@ -56,8 +56,11 @@ CLOUDFLARE_EMAIL=gregory.narcin@icloud.com
       - CF_API_EMAIL=CLOUDFLARE_EMAIL
       - CF_API_KEY=$CLOUDFLARE_APITOKEN
 ````
-6. 
-7. Paste the Authorization Tokens from your provider in this section. You may need different and/or additional fields here based on your provider.
+6. decommenter la ligne `- --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory ` pour passer en mode stagging et eviter d'atteindre le rate limite de Let's Encrypt
+7. Start Traefik and the `catapp` `docker stack deploy -c docker-compose.yml traefik`
+8. Open the Traefik Dashboard `http://your_domain_here:8080` and verify Traefik is running and `catapp` has TLS enabled.
+9. Open the `catapp` using the domain you filled in at step 6. Remember to use HTTPS now https://your_domain_here.com 
+10. You should now see the `catapp` served with HTTPS and a proper Let's Encrypt Certificate
 
 ## Deployer Traefik avec un certificat.
 
@@ -76,7 +79,14 @@ CLOUDFLARE_EMAIL=gregory.narcin@icloud.com
 
 ## 3.1 Use Wildcard Let's Encrypt Certificate
 
-<img src="../img/traefik-dns-wildcard.png" alt="Traefik DNS" height="250"> 
+````yml
+    labels:
+      traefik.enable: true
+      traefik.http.routers.traefik.entrypoints: websecure
+      traefik.http.routers.wildcard-certs.tls.certresolver: cloudflare
+      traefik.http.routers.wildcard-certs.tls.domains[0].main: ${DOMAINNAME}
+      traefik.http.routers.wildcard-certs.tls.domains[0].sans: '*.${DOMAINNAME}'
+````
 
 1. Add a new DNS record to your DNS provider. Add `*.` in front of your domain `*.you_domain.com` which enables all sub-domain certificates
 2. Now that the Wildcard is configured for DNS, we can edit the Edit the `docker-compose.dns.yml` `catapp` section and add your domain here in the `- "traefik.http.routers.catapp.rule=Host(`your_domain_here`)"` label. This time we will update the domain to `training.your_domain_here.com` 
