@@ -1,0 +1,15 @@
+[ req ]
+prompt             = no
+string_mask        = default
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+x509_extensions    = x509_ext
+[ req_distinguished_name ]
+countryName = fr
+organizationName = Udemy
+commonName = Certificat Applications UdemyCourse
+[ x509_ext ]
+keyUsage=critical,digitalSignature,keyAgreement
+subjectAltName = @alt_names
+[ alt_names ]
+DNS.1 = traefik.dev
