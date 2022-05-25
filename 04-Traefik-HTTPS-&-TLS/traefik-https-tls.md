@@ -77,7 +77,10 @@ openssl x509 -days 825 -req -in server.csr -CA root.cer -CAkey root.key -set_ser
 6. Ajouter 
 
 ## 3.1 Use Wildcard Let's Encrypt Certificate
-
+1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
+2. Deplacez vous dans le dossier `Methode DNS` de notre labo `04-Traefik-HTTPS-&-TLS`
+3. Supprimer le fichier acme.json dans le dossier `letsencrypt`
+3. Ouvrez le fichier `Docker-compose.yml` et ajouter les labels ci-dessous dans le service Traefik pour générer un Wildcard.
 ````yml
     labels:
       traefik.enable: true
@@ -86,11 +89,18 @@ openssl x509 -days 825 -req -in server.csr -CA root.cer -CAkey root.key -set_ser
       traefik.http.routers.wildcard-certs.tls.domains[0].main: ${DOMAINNAME}
       traefik.http.routers.wildcard-certs.tls.domains[0].sans: '*.${DOMAINNAME}'
 ````
+8. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile.
+3. Ouvrer le fichier acme.json, il contient maintenant le wildcard. En exemple sur notre labo : 
+````json
+    "Certificates": [
+      {
+        "domain": {
+          "main": "trazcer.fr",
+          "sans": [
+            "*.trazcer.fr"
+          ]
+````
 
-1. Add a new DNS record to your DNS provider. Add `*.` in front of your domain `*.you_domain.com` which enables all sub-domain certificates
-2. Now that the Wildcard is configured for DNS, we can edit the Edit the `docker-compose.dns.yml` `catapp` section and add your domain here in the `- "traefik.http.routers.catapp.rule=Host(`your_domain_here`)"` label. This time we will update the domain to `training.your_domain_here.com` 
-3. Open up `https://training.your_domain_here`
+# # Poursuivre vers le LAB Bonus
 
-# Continue to the Next Lab Middlewares
-
-### Click here to continue -> [Middlewares Lab](https://github.com/56kcloud/traefik-training/blob/master/05-Middlewares/traefik-middlewares.md)
+### Clique ici ->  [05-Traefik-BONUS](https://github.com/56kcloud/traefik-training/blob/master/05-Middlewares/traefik-middlewares.md)
