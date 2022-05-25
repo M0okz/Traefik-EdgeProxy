@@ -32,9 +32,9 @@
 
 10. Demarrer à nouveau la pile, avec la commande -> `docker-compose up -d`, les changement nécéssaires seront apporté.
 
-## 2. Comment les routeurs fonctoinnent 
+## 2. Comment les routeurs fonctionnent 
 
-Vous pouvez définir sur chaque conteneur que vous souhaitez acheminer le trafic vers un  label. Le label définit l’URL à laquelle le conteneur doit répondre, il peut en posséder plusieurs avec des conditions
+Vous pouvez définir sur chaque conteneur que vous souhaitez acheminer le trafic un  label. Le label "router" définit l’URL à laquelle le conteneur doit répondre, il peut en posséder plusieurs selon les besoins avec des conditions si nécéssaire
 ```
     labels: 
       - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
@@ -50,8 +50,6 @@ Vous pouvez également définir un port. Si votre conteneur fonctionne sur le po
       - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
       - "traefik.http.services.webserver1.loadbalancer.server.port=8000"
 ```
-```
-
-#Poursuivre vers la gestion du HTTPS / TLS  avec Let's Encrypt
+# Poursuivre vers la gestion du HTTPS / TLS  avec Let's Encrypt
 
 ### Clique ici -> [04-Traefik-HTTPS-&-TLS](https://github.com/M0okz/Traefik-Udemy/blob/main/04-Traefik-HTTPS-%26-TLS/traefik-https-tls.md)
