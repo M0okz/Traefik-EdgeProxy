@@ -3,7 +3,7 @@
 # Pré-requis
 
 ** Pour réalise cet labo vous serez plus à l'aise en prenant un nom de domaine chez cloudfare pour exemple dans ce labo
-Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io/v2.3/https/acme/#providers](https://docs.traefik.io/v2.3/https/acme/#providers)**
+Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io/v2.3/https/acme/#providers](https://docs.traefik.io/v2.3/https/acme/#providers)
 
 1. Assurez-vous d’avoir un nom de domaine
 2. Pointer  un enregistrement sur votre ip publique de votre VPS ou de votre routeur.
@@ -20,7 +20,7 @@ Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io
 4. Verifier que l'adresse mail que vous renseigner est  joignable pour la validation
 5. Edite le fichier `.env` et ajouter la racine de votre nom de domaine 
 6. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile.
-7. Via votre navigateur acceder au Dashboard Traefik [http://0.0.0.0:8080](http://0.0.0.0:8080)verifier ensuite que Traefik et nos services sont en HTTPS.
+7. Via votre navigateur acceder au Dashboard Traefik  `http://your_domain_here:8080` verifier ensuite que Traefik et nos services sont en HTTPS.
 8. Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
 
 ## 2. Deployer Traefik methode Let's Encrypt TLS Challenge
@@ -29,9 +29,8 @@ Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io
 3. Ouvrez le fichier `Docker-compose.yml` a la ligne 24 le changement à été fait pour le `Challenge TLS`
 4. Edite le fichier `.env` et ajouter la racine de votre nom de domaine 
 5. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile.
-6. Open the Traefik Dashboard `http://your_domain_here:8080` and verify Traefik is running and `catapp` has TLS enabled.
-7. Via votre navigateur acceder au Dashboard Traefik [http://0.0.0.0:8080](http://0.0.0.0:8080)verifier ensuite que Traefik et nos services sont en HTTPS.
-8. Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
+6. Via votre navigateur acceder au Dashboard Traefik  `http://your_domain_here:8080` verifier ensuite que Traefik et nos services sont en HTTPS.
+7. Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
 
 ## 3. Deployer Traefik methode Let's Encrypt DNS Challenge
 1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
@@ -56,11 +55,10 @@ CLOUDFLARE_EMAIL=gregory.narcin@icloud.com
       - CF_API_EMAIL=CLOUDFLARE_EMAIL
       - CF_API_KEY=$CLOUDFLARE_APITOKEN
 ````
-6. decommenter la ligne `- --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory ` pour passer en mode stagging et eviter d'atteindre le rate limite de Let's Encrypt
-7. Start Traefik and the `catapp` `docker stack deploy -c docker-compose.yml traefik`
-8. Open the Traefik Dashboard `http://your_domain_here:8080` and verify Traefik is running and `catapp` has TLS enabled.
-9. Open the `catapp` using the domain you filled in at step 6. Remember to use HTTPS now https://your_domain_here.com 
-10. You should now see the `catapp` served with HTTPS and a proper Let's Encrypt Certificate
+6. decommenter la ligne `- --certificatesResolvers.dns-cloudflare.acme.caServer.... ` pour le mode stagging (Facultatif)
+7. Lancer la pile `docker-compose up` afin d'observer les logs directement de la pile. Cependant cette methode nécéssite plus de temps.
+8. Via votre navigateur acceder au Dashboard Traefik  `http://your_domain_here:8080` verifier ensuite que Traefik et nos services sont en HTTPS.
+9.  Vous devez normalement observer votre site whoami.xxxx.fr est bien servi avec HTTPS et sont propre certifcat Let's Encrypt
 
 ## Deployer Traefik avec un certificat.
 
