@@ -32,40 +32,26 @@
 
 10. Demarrer à nouveau la pile, avec la commande -> `docker-compose up -d`, les changement nécéssaires seront apporté.
 
-## 3. Make everything Dynamic
-In this Lab we will comment out the **Service** and **Load Balancer** Labels to see how Traefik will *Dynamically* create the service and **Load Balancer**.
+## 2. Comment les routeurs fonctoinnent 
 
-1. From the `03-Routers-and-Services` directory edit the `docker-compose.yml` file and remove/add comment to the **Labels** `- "traefik.http.routers.catapp.service=catapp"` and `- "traefik.http.services.catapp.loadbalancer.server.port=5000"` from the `catapp`. The only **Labels** enabled as seen below:
-
-```yaml
-catapp:
-    image: mikesir87/cats:1.0
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.catapp.rule=Host(`catapp.localhost`)"
-      - "traefik.http.routers.catapp.entrypoints=web"
+Vous pouvez définir sur chaque conteneur que vous souhaitez acheminer le trafic vers un  label. Le label définit l’URL à laquelle le conteneur doit répondre, il peut en posséder plusieurs avec des conditions
+```
+    labels: 
+      - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
+```
+```
+    labels#(Condition de couverture de tout un domaine): 
+      - "traefik.http.routers.webserver1.rule= Host(`webserver1.localhost``) || Host(`www.webserver1.localhost``)"
 ```
 
-2. From the `03-Routers-and-Services` directory execute this command -> `docker stack deploy -c docker-compose.yml traefik` **this will update our Docker Swarm Stack with the new Label changes.**
-3. Open the Traefik Dashboard [http://0.0.0.0:8080](http://0.0.0.0:8080) and wait about 15-20 seconds for the changes to be visible in the dashboard. 
-4. Navigate to the **HTTP Router** & **HTTP Services** menus. You should now see that Traefik Dynamically created service name which is now recognized by the **Router**
-5. Stop and clean-up `docker stack rm traefik`
-
-### Solution for the catapp Labels Lab
-
-Please check the `03-Routers-and-Services/docker-compose.answers.yml` if you get stuck anywhere during the lab or need a reference.
-
-```yaml
-catapp:
-    image: mikesir87/cats:1.0
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.catapp.rule=Host(`catapp.localhost`)"
-      - "traefik.http.routers.catapp.entrypoints=web"
-      - "traefik.http.routers.catapp.service=catapp"
-      - "traefik.http.services.catapp.loadbalancer.server.port=5000"
+Vous pouvez également définir un port. Si votre conteneur fonctionne sur le port 8000, n’oubliez pas de le définir dans les label :
+```
+    labels: 
+      - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
+      - "traefik.http.services.webserver1.loadbalancer.server.port=8000"
+```
 ```
 
-# Continue to the Next Lab HTTPS / TLS / Let's Encrypt Lab
+#Poursuivre vers la gestion du HTTPS / TLS  avec Let's Encrypt
 
-### Click here to continue -> [HTTPS  & TLS](https://github.com/56kcloud/traefik-training/blob/master/04-HTTPS-TLS/traefik-https-tls.md)
+### Clique ici -> [04-Traefik-HTTPS-&-TLS](https://github.com/M0okz/Traefik-Udemy/blob/main/04-Traefik-HTTPS-%26-TLS/traefik-https-tls.md)
