@@ -1,0 +1,5 @@
+# Dynamic configuration
+
+[[tls.certificates]]
+  certFile = "/config/server.cert"
+  keyFile = "/config/server.key"

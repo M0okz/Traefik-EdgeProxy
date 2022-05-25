@@ -74,6 +74,7 @@ openssl x509 -days 825 -req -in server.csr -CA root.cer -CAkey root.key -set_ser
 ```
 
 5. Une fois les certificat générer installer les certificat sur la machine cliente.
+6. Ajouter 
 
 ## 3.1 Use Wildcard Let's Encrypt Certificate
 
