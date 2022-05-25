@@ -23,8 +23,11 @@ services:
 #########################################################
 ## WEBSERVERS
 #########################################################
-#  whoami:
-#    image: traefik/whoami
+  whoami:
+    image: traefik/whoami
 #    labels:
 #       - "traefik.enable=true"
 #       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+#       - "traefik.http.routers.whoami.entrypoints=web"
+#       - "traefik.http.routers.whoami.service=whoami"
+#       - "traefik.http.services.whoami.loadbalancer.server.port=5000"

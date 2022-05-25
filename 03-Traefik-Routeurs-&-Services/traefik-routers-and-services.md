@@ -37,18 +37,18 @@
 Vous pouvez définir sur chaque conteneur que vous souhaitez acheminer le trafic un  label. Le label "router" définit l’URL à laquelle le conteneur doit répondre, il peut en posséder plusieurs selon les besoins avec des conditions si nécéssaire
 ```
     labels: 
-      - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
 ```
 ```
     labels#(Condition de couverture de tout un domaine): 
-      - "traefik.http.routers.webserver1.rule= Host(`webserver1.localhost``) || Host(`www.webserver1.localhost``)"
+      - "traefik.http.routers.whoami.rule= Host(`whoami.localhost``) || Host(`www.whoami.localhost``)"
 ```
 
 Vous pouvez également définir un port. Si votre conteneur fonctionne sur le port 8000, n’oubliez pas de le définir dans les label :
 ```
     labels: 
-      - "traefik.http.routers.webserver1.rule=Host(`webserver1.localhost`)"
-      - "traefik.http.services.webserver1.loadbalancer.server.port=8000"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+      - "traefik.http.services.whoami.loadbalancer.server.port=8000"
 ```
 # Poursuivre vers la gestion du HTTPS / TLS  avec Let's Encrypt
 
