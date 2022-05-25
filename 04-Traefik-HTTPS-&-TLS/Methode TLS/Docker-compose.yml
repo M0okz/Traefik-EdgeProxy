@@ -20,7 +20,7 @@ services:
       #Let's Encrypt
       - --certificatesresolvers.cloudfare.acme.email=info@trazcer.fr
       - --certificatesresolvers.cloudfare.acme.storage=./letsencrypt/acme.json
-      # used during the challenge
+      # Section used for the challenge
       - --certificatesresolvers.cloudfare.acme.tlschallenge=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -37,15 +37,26 @@ Voici la liste des provider pris en charge par Traefik  [https://docs.traefik.io
 1. Arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Change to the `04-HTTPS-and-TLS` folder
 3. Log in to your DNS provider and collect the Authorization Tokens for your provider. Review the [https://docs.traefik.io/v2.3/https/acme/#providers](https://docs.traefik.io/v2.3/https/acme/#providers) list to see which tokens you require for your provider. This step is unique to the DNS provider you are using. 
-4. Pour ceux qui travaillent avec cloudfare voici un exemple de notre fichier `.env`
+4. Pour ceux qui travaillent avec cloudfare voici un exemple de notre fichier `.env` avec les variables nécéssaires
 ````dosini
 DOMAINNAME=trazcer.fr
-CLOUDFLARE_ZONEID=c65955ef4ed7de97a9c4a3efaf05886c
-CLOUDFLARE_APITOKEN=-DlCElDkZ-l_ELoIklvaCK7AiH999U2vvDPhDOZB
+CLOUDFLARE_ZONEID=c6595ef4ed7de97a94a3efaf05886
+CLOUDFLARE_APITOKEN=-DlClDkZ-l_ELoIklaCK7AiH999U2vvDPhDOZ
 CLOUDFLARE_EMAIL=gregory.narcin@icloud.com
 ````
-5. Open the `docker-compose.dns.yml` file in your favorite editor and review the `traefik` section
-6. Edit the `Environment` section under the `Traefik` service.
+5. Ensuite ouvrez le fichier `docker-compose.dns.yml` a la `ligne 24` dans la section pour le challenge ajouter le bloc ci-dessous :
+````
+      ##- --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory 
+      - --certificatesResolvers.dns-cloudflare.acme.email=$CLOUDFLARE_EMAIL
+      - --certificatesResolvers.dns-cloudflare.acme.storage=./letsencrypt/acme.json
+      - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
+      - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
+      - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=90
+    environment:
+      - CF_API_EMAIL=CLOUDFLARE_EMAIL
+      - CF_API_KEY=$CLOUDFLARE_APITOKEN
+````
+6. 
 7. Paste the Authorization Tokens from your provider in this section. You may need different and/or additional fields here based on your provider.
 
 ## Deployer Traefik avec un certificat.
