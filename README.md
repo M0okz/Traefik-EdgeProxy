@@ -33,5 +33,3 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repo contie
 #### Contribution
 
 Si vous voyez une erreur ou si quelque chose doit être mis à jour, n'hésitez surtout pas.:wave:
-
-<img src="./img/teach.png" alt="Udemy Logo" >
