@@ -14,7 +14,7 @@ Avant de débuter ce labo, pour plus de clareté et de simplicité dans la gesti
 il est préférable d'ajouter quelques lignes qui permettron à Traefik d'avoir un emplacement ou charger tout nos 
 futur fichiers de configurations.
 
-Dans la section `command` du fichier `Docker-compose.yml` nous allons passer cet argument supplémentaire : `- --providers.file.directory=./config`
+Dans la section `command` du fichier `Docker-compose.yml` nous allons ajouter cet argument : `- --providers.file.directory=./config`
 Puis nous allons déclarer ce dossier `config` dans la section `volumes` : `- ./config:/config`
 Voilà mainteant Traefik est prêt à allez lire tout nos fichiers de configurations à chaud contenu dans ce dossier.
 
