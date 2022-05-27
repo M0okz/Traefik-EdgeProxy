@@ -123,4 +123,4 @@ Les chaines de middlewares vous permettent de définir des combinaisons réutili
 
 ## Poursuivre vers le monitoring et la gestion des logs
 
-### Clique ici ->  [06-Traefik-Monitoring-&-Logs](https://github.com/56kcloud/traefik-training/blob/master/06-Observability/traefik-observability.md)
+### Clique ici ->  [06-Traefik-Monitoring-&-Logs](https://github.com/M0okz/Traefik-EdgeProxy/blob/main/06-Traefik-Monitoring-&-Logs/traefik-logs-monitoring.md)
