@@ -57,6 +57,21 @@ X-Real-Ip: 172.20.0.1
 ##  4. Rencontre avec le Dashboard
 1. Ouvrez une fenetre : http://0.0.0.0:8080 pour acceder au panel Traefik
 
+## 5. Decouverte des réseaux et des volumes avec Traefik
+````yml
+---
+version: '3'
+
+########################### NETWORK
+networks:
+  traefik:
+
+########################### VOLUMES
+volumes:
+
+
+services:
+````
 
 # Continuer pour la Configration de Traefik
 

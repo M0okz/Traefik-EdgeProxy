@@ -7,6 +7,8 @@ services:
   reverse-proxy: 
     container_name: traefik
     image: traefik:v2.6.3
+    networks:
+      - traefik
     ports:
       - 80:80
       - 8080:8080 #Management UI
