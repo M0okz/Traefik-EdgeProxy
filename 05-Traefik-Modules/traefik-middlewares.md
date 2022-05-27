@@ -121,6 +121,6 @@ Les chaines de middlewares vous permettent de définir des combinaisons réutili
 ````
 3. Mettez à jour le routeur middleware de notre application par uniquement `chain-basic-auth`.
 
-## Poursuivre vers le monitoring et la gestion des logs
+## Poursuivre vers les concepts bonus
 
-### Clique ici ->  [06-Traefik-Monitoring-&-Logs](https://github.com/M0okz/Traefik-EdgeProxy/blob/main/06-Traefik-Monitoring-&-Logs/traefik-logs-monitoring.md)
+### Clique ici ->  [07-Traefik-BONUS](https://github.com/M0okz/Traefik-EdgeProxy/blob/main/07-Traefik-BONUS/traefik-bonus.md)
