@@ -38,7 +38,7 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 ```toml
 [http.middlewares]
     [http.middlewares.whoami-basicauth.basicAuth]
-      users=traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"
+      users = ["traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"]
 ```
 4. Creer un nouveau router qui s'occupera de géré nos differents middlewares `- "traefik.http.routers.whoami.middlewares=whoami-basicauth"`
 5. Avant de lancer la pile, vous pouvez recuperer le certificat `acme.json` de notre précédant labo en le copiant dans le même dossier sur ce labo (chmod 600 ensuite)
@@ -48,8 +48,13 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 11. Saisissez l'utilisateur `traefik`  et le mot de passe `whoami` pour acceder à notre application `whoami`
 
 ## 2. Middleware Compression
-1. Before we begin, lets cleanup the HTTP stack  `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
-2. Change to the `05-HTTPS-and-TLS` folder
+1. Editez le fichier `` pour ajouter le middleware de compression : 
+````toml
+[http.middlewares]
+    [http.middlewares.whoami-basicauth.basicAuth]
+      users = ["traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"]
+    [http.middlewares.whoami-compress.compress]
+````
 3. Open the `docker-compose.compress.yml` file in your favorite editor and review the `whoami` section
 4. Add the **Compress Middleware** to our `whoami` section `- "traefik.http.middlewares.test-compress.compress=true"`
 5. Update the router to include the **Compress Middleware** ` - "traefik.http.routers.whoami.middlewares=test-auth,test-compress"`
