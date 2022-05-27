@@ -25,7 +25,7 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repo contie
 * [Traefik Modules](./05-Traefik-Modules/traefik-middlewares.md)
 
 ## 6. Traefik Monitoring & Logs
-* [Traefik Monitoring](./06-Traefik-Monitoring-&-Logs/traefik-monitoring.md)
+* [Traefik Monitoring](./06-Traefik-Monitoring-&-Logs/traefik-logs-monitoring.md)
 
 ## 7. Traefik Bonus
 * [Traefik Advanced Tips](./08-Advanced-Tips/traefik-advanced-tips.md)
