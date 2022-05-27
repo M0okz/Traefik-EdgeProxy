@@ -119,6 +119,8 @@ Les chaines de middlewares vous permettent de définir des combinaisons réutili
     [http.middlewares.chain-basic-auth.chain]
       middlewares = [ "whoami-basicauth", "whoami-compress"]
 ````
+3. Mettez à jour le routeur middleware de notre application par uniquement `chain-basic-auth`.
+
 ## Poursuivre vers le monitoring et la gestion des logs
 
-### Click here to continue -> [Observability Lab](https://github.com/56kcloud/traefik-training/blob/master/06-Observability/traefik-observability.md)
+### Clique ici ->  [06-Traefik-Monitoring-&-Logs](https://github.com/56kcloud/traefik-training/blob/master/06-Observability/traefik-observability.md)
