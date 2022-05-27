@@ -22,7 +22,7 @@ Voilà mainteant Traefik est prêt à allez lire tout nos fichiers de configurat
 1. Commence par, arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Deplacez vous dans le dossier `05-Traefik-Modules`.
 3. Sur votre serveur penser à installer les utilitaires Apache : `sudo apt install apache2-utils`
-4. Générez un nouveau mot de passe ici  `whoami` avec l'utilisateur `traefik` : `echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g`
+4. Générez un nouveau mot de passe, ici  `whoami` avec l'utilisateur `traefik` : `echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g`
 5. Tout les `$` dans la chaine de caratère doivent être doublés `$$` pour échaper les caractères correctement. 
 
 Lancer la commande `htpasswd`
@@ -44,10 +44,10 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 5. Avant de lancer la pile, vous pouvez recuperer le certificat `acme.json` de notre précédant labo en le copiant dans le même dossier sur ce labo (chmod 600 ensuite)
 8. Lancer la pile `docker-compose up -d`
 9. Dashboard Traefik  `https://your_domain_here:8080` et verifier la création de notre middleware `whoami-basicauth` est lancé et assigné à notre service `whoami`
-10. Open the `whoami` application in a new browser tab [https://whoami.your_domain_here](https://whoami.your_domain_here)
+10. Acerder à notre application [https://whoami.your_domain_here](https://whoami.your_domain_here)
 11. Saisissez l'utilisateur `traefik`  et le mot de passe `whoami` pour acceder à notre application `whoami`
 
-## 2. Add Compression Middleware to our whoami
+## 2. Middleware Compression
 1. Before we begin, lets cleanup the HTTP stack  `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
 2. Change to the `05-HTTPS-and-TLS` folder
 3. Open the `docker-compose.compress.yml` file in your favorite editor and review the `whoami` section

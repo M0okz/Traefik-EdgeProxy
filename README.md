@@ -22,7 +22,7 @@ Bienvenue dans notre espace d'entrainement et de dévelloppement. Ce repo contie
 * [Traefik HTTPS & TLS](./04-Traefik-HTTPS-&-TLS/traefik-https-tls.md)
 
  ## 5. Traefik Middlewares
-* [Traefik Modules (Middleware)](./05-Traefik-Modules/traefik-middlewares.md)
+* [Traefik Modules](./05-Traefik-Modules/traefik-middlewares.md)
 
 ## 6. Traefik Monitoring & Logs
 * [Traefik Monitoring](./06-Traefik-Monitoring-&-Logs/traefik-monitoring.md)
