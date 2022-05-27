@@ -39,7 +39,7 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
     [http.middlewares.whoami-basicauth.basicAuth]
       users = ["traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"]
 ```
-4. Creer un nouveau router qui s'occupera de géré nos differents middlewares `- "traefik.http.routers.whoami.middlewares=whoami-basicauth"`
+4. Ouvez le fichier `Docker-compose.yml` et creer un nouveau router qui s'occupera de géré nos differents middlewares `- "traefik.http.routers.whoami.middlewares=whoami-basicauth"`
 5. Avant de lancer la pile, vous pouvez recuperer le certificat `acme.json` de notre précédant labo en le copiant dans le même dossier sur ce labo (chmod 600 ensuite)
 8. Lancer la pile `docker-compose up -d`
 9. Dashboard Traefik  `https://your_domain_here:8080` et verifier la création de notre middleware `whoami-basicauth` est lancé et assigné à notre service `whoami`
@@ -54,7 +54,7 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
       users = ["traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"]
     [http.middlewares.whoami-compress.compress]
 ````
-3. Open the `docker-compose.compress.yml` file in your favorite editor and review the `whoami` section
+3.  Ouvez le fichier `Docker-compose.yml` et ajouter le middleware à la suite  : `traefik.http.routers.whoami.middlewares=whoami-basicauth,whoami-compress`
 4. Add the **Compress Middleware** to our `whoami` section `- "traefik.http.middlewares.test-compress.compress=true"`
 5. Update the router to include the **Compress Middleware** ` - "traefik.http.routers.whoami.middlewares=test-auth,test-compress"`
 6. Start Traefik and the `whoami` `docker stack deploy -c docker-compose.compress.yml traefik`
