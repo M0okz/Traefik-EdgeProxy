@@ -125,6 +125,6 @@ Ajouter ensuite les services suivants :
 9. Ouvez le Dashboard `Traefik2`
 10. Visualisez ensuite les beaux graphiques
 
-# Continue to the Next Operations
+## Poursuivre vers les concepts bonus
 
-### Click here to continue -> [Operations Lab](https://github.com/56kcloud/traefik-training/blob/master/07-Operations/traefik-operations.md)
+### Clique ici ->  [07-Traefik-BONUS](https://github.com/M0okz/Traefik-EdgeProxy/blob/main/07-Traefik-BONUS/traefik-bonus.md)
