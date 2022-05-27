@@ -1,4 +1,0 @@
-[http.middlewares]
-    [http.middlewares.whoami-basicauth.basicAuth]
-      users = ["traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI"]
-    [http.middlewares.whoami-compress.compress]
