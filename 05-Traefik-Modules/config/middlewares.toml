@@ -1,0 +1,3 @@
+[http.middlewares]
+    [http.middlewares.whoami-basicauth.basicAuth]
+      users = ["admin:$xxxx"]
