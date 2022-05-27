@@ -22,7 +22,7 @@ Voilà mainteant Traefik est prêt à allez lire tout nos fichiers de configurat
 1. Commence par, arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Deplacez vous dans le dossier `05-Traefik-Modules`.
 3. Sur votre serveur penser à installer les utilitaires Apache : `sudo apt install apache2-utils`
-4. Générez un nouveau mot de passe pour notre appli `whoami` avec l'utilisateru `traefik` : `echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g`
+4. Générez un nouveau mot de passe ici  `whoami` avec l'utilisateur `traefik` : `echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g`
 5. Tout les `$` dans la chaine de caratère doivent être doublés `$$` pour échaper les caractères correctement. 
 
 Lancer la commande `htpasswd`
