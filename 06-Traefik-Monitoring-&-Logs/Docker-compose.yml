@@ -1,0 +1,41 @@
+---
+version: '3'
+services:
+#########################################################
+## TRAEFIK
+#########################################################
+  reverse-proxy: 
+    container_name: traefik
+    image: traefik:v2.6.3
+    ports:
+      - 80:80
+      - 8080:8080 #Management UI
+    command: # CLI arguments
+      - --entrypoints.web.address=:80      
+      - --entrypoints.websecure.address=:443
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedByDefault=false
+      - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+      #Let's Encrypt
+      - --certificatesresolvers.cloudfare.acme.email=info@trazcer.fr
+      - --certificatesresolvers.cloudfare.acme.storage=./letsencrypt/acme.json
+      # Section used for the challenge
+      - --certificatesresolvers.cloudfare.acme.httpchallenge.entrypoint=web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+      - ./config:/config
+ #     - ./logs:/logs
+#########################################################
+## WEBSERVERS
+#########################################################
+  whoami:
+    image: traefik/whoami
+    labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.whoami.rule=Host(`whoami.$DOMAINNAME`)"
+       - "traefik.http.routers.whoami.entrypoints=websecure"
+       - "traefik.http.routers.whoami.service=whoami"
+       - "traefik.http.services.whoami.loadbalancer.server.port=80"
+       - "traefik.http.routers.catapp.tls.certresolver=cloudfare"
