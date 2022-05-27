@@ -14,12 +14,12 @@ Avant de débuter ce labo, pour plus de clareté et de simplicité dans la gesti
 il est préférable d'ajouter quelques lignes qui permettron à Traefik d'avoir un emplacement ou charger tout nos 
 futur fichiers de configurations.
 
-Dans la section `command` nous allons passer cet argument supplémentaire : `- --providers.file.directory=./config`
+Dans la section `command` du fichier `Docker-compose.yml` nous allons passer cet argument supplémentaire : `- --providers.file.directory=./config`
 Puis nous allons déclarer ce dossier `config` dans la section `volumes` : `- ./config:/config`
 Voilà mainteant Traefik est prêt à allez lire tout nos fichiers de configurations à chaud contenu dans ce dossier.
 
 ## 1. Middleware Basic Auth
-1. Commencer, par arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
+1. Commence par, arretez et supprimer tout les conteneurs par cette commande : docker rm $(docker ps -a -q)
 2. Deplacez vous dans le dossier `05-Traefik-Modules`.
 3. Sur votre serveur penser à installer les utilitaires Apache : `sudo apt install apache2-utils`
 4. Générez un nouveau mot de passe pour notre appli `whoami` par cette commande `echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g`
