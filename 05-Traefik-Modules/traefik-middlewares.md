@@ -111,8 +111,14 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 12. Nous allons tester la redirection, Ouvrez un nouvel onglet en navigation privée et saisssez l'url de l'appli en http et observer la redirection automatique HTTP -> HTTPS. 
 
 ## 5. Middleware chaines
-
-
-# Continue to the Next Observability
+Les chaines de middlewares vous permettent de définir des combinaisons réutilisables pour tout vos services. Cela facilite la réutilisation des mêmes chaines.
+1. Créer un nouveau fichier `middlewares-chains.toml` dans le dossier `config` du dossier `05-Traefik-Modules` 
+2. Ajouter à ce fichier le bloc suivant en exemple pour notre application : 
+````toml
+  [http.middlewares.chain-basic-auth]
+    [http.middlewares.chain-basic-auth.chain]
+      middlewares = [ "whoami-basicauth", "whoami-compress"]
+````
+## Poursuivre vers le monitoring et la gestion des logs
 
 ### Click here to continue -> [Observability Lab](https://github.com/56kcloud/traefik-training/blob/master/06-Observability/traefik-observability.md)
