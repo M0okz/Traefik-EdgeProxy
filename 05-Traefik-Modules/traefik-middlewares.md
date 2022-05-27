@@ -2,17 +2,14 @@
 
 
 # Middlewares
-Sometimes you need to adjust the requests that are coming to your webservice.
-This could be adding or removing a path or adding basic auth for example.
-To run this lab:
-1. Navigate in your command prompt to this directory.
-2. Run `docker-compose up`
+
+Connecté aux routeurs, les middlewares sont un moyen de peaufiner les demandes avant qu’elles ne soient envoyées à vos services (ou avant que la réponse des services ne soit envoyée aux clients)
 
 This lab shows you:
 * How to use middlewares to change manipulate or adjust requests.
 * How to enable middlewares for your webservice
 
-## 1. Add Basic Authentication to our CatApp
+## 1. Middleware Basic Auth
 1. Before we begin, lets cleanup any running Docker stack `docker stack rm traefik` If you named you stack something else use your specified name. If you don't remember run `docker stack ls`
 2. Change to the `05-Middlewares` folder
 3. Generate a new password for our `catapp` by running `echo $(htpasswd -nb traefik training) | sed -e s/\\$/\\$\\$/g`
