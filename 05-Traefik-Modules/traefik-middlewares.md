@@ -32,7 +32,6 @@ echo $(htpasswd -nb traefik whoami) | sed -e s/\\$/\\$\\$/g
 traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 
 ```
-
 2. Créer le ficher `middlewares.toml` dans le dossier `config` avec votre editeur de texte.
 3. Ajouter le middleware basicAuth avec le bloc suivant :
 ```toml
@@ -48,7 +47,7 @@ traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.
 11. Saisissez l'utilisateur `traefik`  et le mot de passe `whoami` pour acceder à notre application `whoami`
 
 ## 2. Middleware Compression
-1. Editez le fichier `` pour ajouter le middleware de compression : 
+1. Editez le fichier `middlewares.toml` pour ajouter le middleware `whoami-compress` : 
 ````toml
 [http.middlewares]
     [http.middlewares.whoami-basicauth.basicAuth]
